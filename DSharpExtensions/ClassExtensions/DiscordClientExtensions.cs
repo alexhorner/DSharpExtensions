@@ -5,7 +5,7 @@ using DSharpPlus;
 using DSharpPlus.Entities;
 using DSharpPlus.Net;
 
-namespace DSharpExtensions
+namespace DSharpExtensions.ClassExtensions
 {
     public static class DiscordClientExtensions
     {
