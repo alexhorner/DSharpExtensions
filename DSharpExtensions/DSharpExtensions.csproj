@@ -5,6 +5,9 @@
     <Authors>DSharpExtensions</Authors>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Version>1.0.0</Version>
+    <PackageDescription>A set of useful utilities to extend DSharpPlus </PackageDescription>
+    <RepositoryUrl>https://github.com/alexhorner/DSharpExtensions</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
