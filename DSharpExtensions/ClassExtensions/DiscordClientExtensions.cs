@@ -9,11 +9,23 @@ namespace DSharpExtensions.ClassExtensions
 {
     public static class DiscordClientExtensions
     {
+        //Objects
+        private static DiscordApiClient apiClient;
+
+        //Methods
+        private static MethodInfo createDmAsyncMethod;
+
         public static async Task<DiscordDmChannel> CreateDmChannelAsync(this DiscordClient client, ulong id)
         {
-            DiscordApiClient apiClient = ReflectionUtility.GetObjectFieldByType<BaseDiscordClient, DiscordApiClient>(client) as DiscordApiClient; //I know this isn't pretty.
+            if (apiClient == null)
+            {
+                apiClient = ReflectionUtility.GetObjectFieldByType<BaseDiscordClient, DiscordApiClient>(client) as DiscordApiClient; //I know this isn't pretty.
+            }
 
-            MethodInfo createDmAsyncMethod = typeof(DiscordApiClient).GetMethod("CreateDmAsync", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (createDmAsyncMethod == null)
+            {
+                createDmAsyncMethod = typeof(DiscordApiClient).GetMethod("CreateDmAsync", BindingFlags.NonPublic | BindingFlags.Instance);
+            }
 
             return await (createDmAsyncMethod.Invoke(apiClient, new object[] { id }) as Task<DiscordDmChannel>);
         }
